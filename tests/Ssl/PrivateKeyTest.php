@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ACME PHP library.
+ * This file is part of the Acme PHP project.
  *
  * (c) Titouan Galopin <galopintitouan@gmail.com>
  *
@@ -13,8 +13,9 @@ namespace Tests\AcmePhp\Ssl;
 
 use AcmePhp\Ssl\PrivateKey;
 use AcmePhp\Ssl\PublicKey;
+use PHPUnit\Framework\TestCase;
 
-class PrivateKeyTest extends \PHPUnit_Framework_TestCase
+class PrivateKeyTest extends TestCase
 {
     public function test getPublicKey returns a PublicKey()
     {

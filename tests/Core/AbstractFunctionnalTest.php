@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ACME PHP library.
+ * This file is part of the Acme PHP project.
  *
  * (c) Titouan Galopin <galopintitouan@gmail.com>
  *
@@ -11,10 +11,11 @@
 
 namespace Tests\AcmePhp\Core;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
-abstract class AbstractFunctionnalTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractFunctionnalTest extends TestCase
 {
     /**
      * @param string $token
@@ -44,6 +45,10 @@ abstract class AbstractFunctionnalTest extends \PHPUnit_Framework_TestCase
             '"-t"',
             '"'.$documentRoot.'"',
         ]);
+
+        if (\method_exists(Process::class, 'fromShellCommandline')) {
+            return Process::fromShellCommandline('exec '.$script, $documentRoot, null, null, null);
+        }
 
         return new Process('exec '.$script, $documentRoot, null, null, null);
     }

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ACME PHP library.
+ * This file is part of the Acme PHP project.
  *
  * (c) Titouan Galopin <galopintitouan@gmail.com>
  *
@@ -33,7 +33,7 @@ class CertificateParser
     {
         $rawData = openssl_x509_parse($certificate->getPEM());
 
-        if (!is_array($rawData)) {
+        if (!\is_array($rawData)) {
             throw new CertificateParsingException(
                 sprintf('Fail to parse certificate with error: %s', openssl_error_string())
             );
